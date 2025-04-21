@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Castor Oil</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gay text-white">
+
+<!-- component -->
+ <section class="p-10">
+<div class="bg-gray-100 ">
+    <div class="bg-white p-6  md:mx-auto">
+      <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
+          <path fill="currentColor"
+              d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+          </path>
+      </svg>
+      <div class="text-center">
+          <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Order Placed!</h3>
+          <p class="text-gray-600 my-2">Thank you for placing your order. Our customer care will get in touch soon.</p>
+          <p> Have a great day!  </p>
+          <div class="py-10 text-center">
+              <a href="{% url 'index' %}" class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                  GO BACK 
+             </a>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-white-800 text-center py-4 text-sm">
+    <p class="text-gray-400">
+      <a href="#" class="text-yellow-500 underline"></a>  
+      <a href="" class="text-yellow-500 underline"></a>.
+    </p>
+  </footer>
+
+ <!-- Popup Form Modal -->
+ <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center ml-4 mr-4 items-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
+      <button 
+        onclick="document.getElementById('popupModal').classList.add('hidden')" 
+        class="absolute top-2 right-2 text-gray-600 hover:text-red-600 text-xl font-bold">&times;</button>
+      
+      <h2 class="text-2xl font-bold mb-4 text-black">Please fill your parcel delivery information below</h2>
+      <form class="space-y-4">
+
+        <input type="text" placeholder="Full Name" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+        <input type="tel" placeholder="Phone number" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+        <input type="email" placeholder="Email Address" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+		<input type="text" placeholder="County" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+		<input type="text" placeholder="Your Location" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+		<input type="number" placeholder="Amount in bottles" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"/>
+        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded w-full font-semibold">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+</html>

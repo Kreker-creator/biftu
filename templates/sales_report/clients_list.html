@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="text-3xl mt-10 font-bold text-green-700 mb-6 text-center font-mono">Client Orders</h1>
+
+  <!-- Search Form -->
+  <form method="GET" class="max-w-md mx-auto mb-6">
+    <div class="flex items-center gap-2">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        placeholder="Search by name or phone..."
+        class="w-full border border-green-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 font-mono"
+      />
+      <button
+        type="submit"
+        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold font-mono"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-green-200 font-mono shadow-md rounded-lg">
+      <thead class="bg-green-100 text-green-800">
+        <tr>
+          <th class="text-left px-4 py-2 border-b">Date</th>
+          <th class="text-left px-4 py-2 border-b">Full Name</th>
+          <th class="text-left px-4 py-2 border-b">Phone</th>
+          <th class="text-left px-4 py-2 border-b">Quantity</th>
+          <th class="text-left px-4 py-2 border-b">Status</th>
+          <th class="text-left px-4 py-2 border-b">Description</th>
+          <th class="text-left px-4 py-2 border-b">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr class="hover:bg-green-50">
+          <td class="px-4 py-2 border-b">{{ order.date }}</td>
+          <td class="px-4 py-2 border-b">{{ order.full_name }}</td>
+          <td class="px-4 py-2 border-b">{{ order.phone_number }}</td>
+          <td class="px-4 py-2 border-b">{{ order.quantity }}</td>
+          <td class="px-4 py-2 border-b capitalize">{{ order.payment_status }}</td>
+          <td class="px-4 py-2 border-b">{{ order.description|truncatewords:10 }}</td>
+          <td class="px-4 py-2 border-b">
+            <button
+            type=""
+            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold font-mono"
+          >
+            Update
+          </button>  
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6" class="text-center py-4 text-red-500">No orders found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+  

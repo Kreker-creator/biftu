@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="text-3xl font-bold text-green-700 text-center mt-10 mb-10">Order Statistics</h1>
+
+  <!-- Pie Chart -->
+  <div class="max-w-xl mx-auto mb-16 bg-green-50 p-6 rounded-lg shadow-lg">
+    <h2 class="text-xl font-semibold mb-4 text-center text-green-700">Payment Status</h2>
+    <canvas id="paymentChart" width="400" height="400"></canvas>
+  </div>
+
+  <!-- Bar Chart -->
+  <div class="max-w-4xl mx-auto bg-green-50 p-6 rounded-lg shadow-lg">
+    <h2 class="text-xl font-semibold mb-4 text-center text-green-700">Units Sold Daily</h2>
+    <canvas id="barChart" width="600" height="400"></canvas>
+  </div>
+
+  <script>
+    // Payment Pie Chart
+    const pieCtx = document.getElementById('paymentChart').getContext('2d');
+    const paymentChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: {{ pie_labels|safe }},
+        datasets: [{
+          label: 'Payment Status',
+          data: {{ pie_data|safe }},
+          backgroundColor: ['#22c55e', '#facc15', '#ef4444'], // green, yellow, red
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+
+    // Daily Sales Bar Chart
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: {{ bar_labels|safe }},
+        datasets: [{
+          label: 'Units Sold',
+          data: {{ bar_data|safe }},
+          backgroundColor: '#22c55e',
+          borderColor: '#16a34a',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+{% endblock %}
