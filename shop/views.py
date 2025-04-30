@@ -19,6 +19,19 @@ def admin_dashboard(request):
     
     return render(request, 'authentication/dashboard.html')
 
+
+def contact(request):
+    
+    return render(request, 'contact.html')
+
+def products(request):
+    
+    return render(request, 'products.html')
+
+def about(request):
+    
+    return render(request, 'about.html')
+
 @login_required
 def order_stats(request):
   # Pie Chart Data: Payment Status Breakdown
